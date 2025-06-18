@@ -1,0 +1,67 @@
+---
+title: "Adv Data Prog with R - Homework 1"
+author: "Giyo Varghese"
+date: "June 2, 2025"
+format: pdf
+---
+
+# Introduction
+
+The **`economics`** dataset contains monthly U.S. economic indicators from January 1967 to December 2015. In this report, we focus on:
+
+- **`date`** – Month/year of each observation  
+- **`unemploy`** – Number of unemployed (in thousands)  
+
+---
+
+# Dataset Description
+
+The **`economics`** dataset includes:
+
+- `date`: The date of each monthly observation (from 1967-01 to 2015-12).  
+- `psavert`: Personal savings rate (percentage).  
+- `pop`: Total U.S. population (in thousands).  
+- `pce`: Personal consumption expenditures (in billions of dollars).  
+- `unemploy`: Number of unemployed individuals (in thousands).  
+- `uempmed`: Median duration of unemployment (in weeks).  
+
+> *“Here, we use only **`date`** and **`unemploy`**, but knowing the other columns helps understand the broader context of the dataset.”*
+
+---
+
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+# Loading ggplot2
+library(ggplot2)
+
+# Importing 'economics' dataset
+data(economics)
+```
+
+# Plotting
+
+In this section, we create a **`line chart`** of U.S. monthly unemployment from January 1967 to December 2015
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+# Create a line chart of 'unemploy' v/s 'date'
+ggplot(economics, aes(x = date, y = unemploy)) +
+  geom_line(color = "firebrick", size = 0.8) +
+  labs(
+    title = "U.S. Unemployment",
+    x = "Year",
+    y = "Unemployed"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 12, face = "bold", hjust = 0.5),
+    axis.title  = element_text(size = 12)
+  )
+
+```
+Unemployment remained at low level at late 1960s before the spikes around in 1975(~8,100) and in 1982(~12,000), And after 1990s, a peak found near 8,500 and it fell until the 2001 downturn, then soared to 14,000 in 2008-09(maybe of recession). Post 2009, the unemployment steadily declined to around 8,200 by 2015.
