@@ -60,7 +60,7 @@ ggplot(economics, aes(x = date, y = unemploy)) +
   theme_minimal() +
   theme(
     plot.title = element_text(size = 12, face = "bold", hjust = 0.5),
-    axis.title  = element_text(size = 12)
+    axis.title  = element_text(size = 10) #Changed the axis title from 12 to 10
   )
 
 ```
